@@ -12,16 +12,45 @@ var workLoad = [
 ];
 
 // Will set the date
-var tasks = moment(); 
-$("#currentDay").text(today.format("MM/DD/YYYY"))
+var hora = moment(); 
+$("#currentDay").text(hora.format("MM/DD/YYYY"));
+
+var horita = moment();
 
 // Save button functionalities
-
-
-// Saves tasks to localstorage
+$(".savetask").on("click", function (event) {
+    event.preventDefault();
+    var blockedoff = parseInt(
+        $(this)
+            .closest(".task")
+            .attr("id")
+    )
+    var Input = $.trim(
+        $(this)
+            .parent()
+            .find("texthere")
+            .val()
+    )
+    workLoad[blockedoff].task = Input;
+    saved();
+})
 
 // Creating tasks
+workLoad.forEach(function(block, index){
+    var hourincrement = block.time;
+    var sectionColour = timecolor(hourincrement)
+})
+
+// Saves tasks to localstorage
+var saved = function () {
+    localStorage.setItem("tasks", JSON.stringify(workLoad))
+}
 
 // Colorful row changes
 
 // Load tasks to localStorage
+
+var loading = JSON.parse (localStorage.getItem("tasks"))
+if (loading){
+    workLoad=loading;
+}
