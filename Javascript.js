@@ -13,6 +13,12 @@ var workLoad = [
     {time: "1900", task:""},
 ];
 
+// Load tasks to localStorage
+var loading = JSON.parse(localStorage.getItem("tasks"));
+if (loading) {
+    workLoad = loading;
+}
+
 // Will set the date
 var ahora = moment(); 
 $("#currentDay").text(ahora.format("MMMM DD, YYYY"));
@@ -46,12 +52,6 @@ function timeColor(time) {
     } else {
         return "present";
     }
-}
-
-// Load tasks to localStorage
-var loading = JSON.parse(localStorage.getItem("tasks"));
-if (loading) {
-    workLoad = loading;
 }
 
 // Saves tasks to localstorage
