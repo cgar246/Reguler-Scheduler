@@ -1,14 +1,14 @@
 // Array for all of the workload to save to localStorage
 var workLoad = [
-    {time: "09:00 am", task:""},
-    {time: "10:00 am", task:""},
-    {time: "11:00 am", task:""},
-    {time: "12:00 pm", task:""},
-    {time: "1:00 pm", task:""},
-    {time: "2:00 pm", task:""},
-    {time: "3:00 pm", task:""},
-    {time: "4:00 pm", task:""},
-    {time: "5:00 pm", task:""},
+    {time: "0900", task:""},
+    {time: "1000", task:""},
+    {time: "1100", task:""},
+    {time: "1200", task:""},
+    {time: "1300", task:""},
+    {time: "1400", task:""},
+    {time: "1500", task:""},
+    {time: "1600", task:""},
+    {time: "1700", task:""},
 ];
 
 // Will set the date
