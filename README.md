@@ -1,5 +1,5 @@
 # Work Day Scheduler Starter Code
-![] (preview.png)
+![](preview.png)
 
 Work day scheduler that will assist with all scheduled tasks for your current day. 
 
