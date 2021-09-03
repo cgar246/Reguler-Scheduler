@@ -1,39 +1,23 @@
 // Array for all of the workload to save to localStorage
 var workLoad = [
-    {time: "0900", task:""},
-    {time: "1000", task:""},
-    {time: "1100", task:""},
-    {time: "1200", task:""},
-    {time: "1300", task:""},
-    {time: "1400", task:""},
-    {time: "1500", task:""},
-    {time: "1600", task:""},
-    {time: "1700", task:""},
+    {time: "09:00 am", task:""},
+    {time: "10:00 am", task:""},
+    {time: "11:00 am", task:""},
+    {time: "12:00 pm", task:""},
+    {time: "1:00 pm", task:""},
+    {time: "2:00 pm", task:""},
+    {time: "3:00 pm", task:""},
+    {time: "4:00 pm", task:""},
+    {time: "5:00 pm", task:""},
 ];
 
 // Will set the date
 var hora = moment(); 
-$("#currentDay").text(hora.format("MM/DD/YYYY"));
+$("#currentDay").text(hora.format("MMMM DD, YYYY"));
 
 var horita = moment();
 
-// Save button functionalities
-$(".savetask").on("click", function (event) {
-    event.preventDefault();
-    var blockedoff = parseInt(
-        $(this)
-            .closest(".task")
-            .attr("id")
-    )
-    var Input = $.trim(
-        $(this)
-            .parent()
-            .find("texthere")
-            .val()
-    )
-    workLoad[blockedoff].task = Input;
-    saved();
-})
+
 
 // Creating tasks
 workLoad.forEach(function(block, index){
@@ -45,12 +29,8 @@ workLoad.forEach(function(block, index){
         + sectionColour + '">' + block.task + '</textarea></div><button class="col-1 saveBtn d-flex justify-content-center align-items-center"><i class="mt-2 far fa-save fa-lg"></i></button></div>'
 
     $(".container").append(sections);
-})
+});
 
-// Saves tasks to localstorage
-var saved = function () {
-    localStorage.setItem("tasks", JSON.stringify(workLoad))
-}
 
 // Colorful row changes
 function timecolor(time) {
@@ -64,10 +44,33 @@ function timecolor(time) {
     } else {
         return "present";
     }
-}
-// Load tasks to localStorage
+};
 
-var loading = JSON.parse (localStorage.getItem("tasks"))
-if (loading){
-    workLoad=loading;
+// Load tasks to localStorage
+var loading = JSON.parse(localStorage.getItem("tasks"));
+if (loading) {
+    workLoad = loading;
 }
+
+// Saves tasks to localstorage
+var saved = function () {
+    localStorage.setItem("tasks", JSON.stringify(workLoad));
+};
+
+// Save button functionalities
+$(".saveBtn").on("click", function (event) {
+    event.preventDefault();
+    var blockedoff = parseInt(
+        $(this)
+            .closest(".task-info")
+            .attr("id")
+    )
+    var Input = $.trim(
+        $(this)
+            .parent()
+            .find("textarea")
+            .val()
+    )
+    workLoad[blockedoff].task = Input;
+    saved();
+});
